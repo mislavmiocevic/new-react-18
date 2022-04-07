@@ -1,5 +1,6 @@
 import {Layout} from "../shared/Layout";
 import {useState} from "react";
+import {doubleRenderInStrictModeTitle} from "./DoubleRenderInStrictMode";
 
 export const migrationTitle = 'Migration from 17 to 18';
 
@@ -22,7 +23,7 @@ export const Migration = () => {
     };
 
     return (
-        <Layout title={migrationTitle} previousSectionTitle={'/'} nextSectionTitle={'todo'}>
+        <Layout title={migrationTitle} previousSectionTitle={'/'} nextSectionTitle={doubleRenderInStrictModeTitle}>
             <p>More details about the migration can be found in the <a href="https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html">React 18 Upgrade Guide</a> documentation</p>
 
             <h3>Internet Explorer support not available</h3>
@@ -125,6 +126,7 @@ const onIncrement = () => {
             <p>- Open the console</p>
             <p>- Clicking on the decrement button will show 1 log in both versions</p>
             <p>- Clicking on the increment button will show 2 logs in React 17, and 1 log in React 18 - both `useState` functions are called in a timeout.</p>
+            <p>Note: check <a href={doubleRenderInStrictModeTitle}>Double render in strict mode</a> section for more details why it stills show 2 logs</p>
             <div style={{ margin: '24px 0' }}>
                 <button onClick={onDecrement} disabled={numericValue === 0}>-</button>
                 <button onClick={onIncrement}>+</button>
