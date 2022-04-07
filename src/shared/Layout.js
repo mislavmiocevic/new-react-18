@@ -3,11 +3,11 @@ export const Layout = ({ children, title, previousSectionTitle, nextSectionTitle
         <div>
             <h2>{title}</h2>
 
-            <div style={{ margin: '48px 0' }}>
+            <div>
                 {children}
             </div>
 
-            <div>
+            <div style={{ marginTop: '128px' }}>
                 {previousSectionTitle ? (
                     <a style={{ marginRight: '48px' }} href={previousSectionTitle}> {'<'} {previousSectionTitle}</a>
                 ) : null}
