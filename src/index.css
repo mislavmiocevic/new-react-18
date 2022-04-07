@@ -35,3 +35,7 @@ h2, h3, h4 {
 p {
     margin-top: 24px;
 }
+
+ul li {
+    margin-bottom: 16px;
+}
