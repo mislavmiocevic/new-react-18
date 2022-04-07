@@ -14,6 +14,8 @@ export const Layout = ({ children, title, previousSectionTitle, nextSectionTitle
                 {nextSectionTitle ? (
                     <a href={nextSectionTitle}>{nextSectionTitle} {'>'}</a>
                 ) : null}
+
+                <a style={{ marginLeft: '48px' }} href="/">Home</a>
             </div>
         </div>
     )
