@@ -55,6 +55,32 @@ export const DoubleRenderInStrictMode = () => {
             {buggyTodos.map((todo, index) => (
                 <div key={todo + index}>{todo}</div>
             ))}
+
+            <code>
+                <pre style={{ marginTop: '40px' }}>{`const [todos, setTodos] = useState(['original todo']);
+const [buggyTodos, setBuggyTodos] = useState(['original buggy todo']);
+
+useEffect(() => {
+    // {"todos": ["learn React 18", "turn off strict mode???"]}
+    fetch('https://run.mocky.io/v3/650f137f-b187-48a3-8896-3b80780e8a5e')
+        .then(response => response.json())
+        .then(data => {
+            setTodos(prevState => [...new Set([...prevState, ...data.todos])]);
+            setBuggyTodos(prevState => [...prevState, ...data.todos]);
+        });
+}, [])
+
+<p>Todos:</p>
+{todos.map(todo => (
+    <div key={todo}>{todo}</div>
+))}
+
+<p>Buggy todos:</p>
+{buggyTodos.map((todo, index) => (
+    <div key={todo + index}>{todo}</div>
+))}
+`}</pre>
+            </code>
         </Layout>
     )
 }
