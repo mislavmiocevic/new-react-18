@@ -97,6 +97,18 @@ renderToReadableStream - to support streaming SSR with Suspense for modern edge 
                 </pre>
             </code>
 
+            <h3>Server suspense available</h3>
+            <p>In React 17, loading the app on the server was to render all or nothing, and if you have a slow component
+                (e.g. loads data slowly or has a lot of JS code) then it starts to be a bottleneck.</p>
+            <p>Now you can wrap slow part of the application with Suspense on the server as well - code splitting on the server now works!</p>
+            <code>
+                <pre>
+                    {`<Suspense fallback={<Spinner />}>
+    <Articles />
+</Suspense>`}
+                </pre>
+            </code>
+
             <h3>Other deprecations in APIs</h3>
             <code>
                 <pre>
