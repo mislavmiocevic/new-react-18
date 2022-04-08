@@ -8,6 +8,7 @@ import {StartTransitionAPI, startTransitionAPITitle} from "./sections/startTrans
 import {StartTransitionExample, startTransitionExampleTitle} from "./sections/examples/startTransitionExample";
 import {UseDeferredValueHook, useDeferredValueHookTitle} from "./sections/useDeferredValueHook";
 import {UseInsertionEffectHook, useInsertionEffectHookTitle} from "./sections/useInsertionEffectHook";
+import {UseSyncExternalStore, useSyncExternalStoreTitle} from "./sections/useSyncExternalStore";
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                         <li><a href={startTransitionAPITitle}>{startTransitionAPITitle}</a></li>
                         <li><a href={useDeferredValueHookTitle}>{useDeferredValueHookTitle}</a></li>
                         <li><a href={useInsertionEffectHookTitle}>{useInsertionEffectHookTitle}</a></li>
+                        <li><a href={useSyncExternalStoreTitle}>{useSyncExternalStoreTitle}</a></li>
                         <li><a href={additionalMinorFeaturesTitle}>{additionalMinorFeaturesTitle}</a></li>
                     </ul>
 
@@ -55,6 +57,10 @@ const App = () => {
 
             {isSectionVisible(useInsertionEffectHookTitle) ? (
                 <UseInsertionEffectHook/>
+            ): null}
+
+            {isSectionVisible(useSyncExternalStoreTitle) ? (
+                <UseSyncExternalStore/>
             ): null}
 
             {isSectionVisible(additionalMinorFeaturesTitle) ? (
