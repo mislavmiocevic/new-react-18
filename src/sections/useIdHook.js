@@ -1,6 +1,7 @@
 import {Layout} from "../shared/Layout";
 import {doubleRenderInStrictModeTitle} from "./DoubleRenderInStrictMode";
 import {useId, useState} from "react";
+import {startTransitionAPITitle} from "./startTransitionAPI";
 
 export const useIdHookTitle = 'useId hook';
 
@@ -13,7 +14,7 @@ export const UseIdHook = () => {
     console.log(idTwo)
 
     return (
-        <Layout title={useIdHookTitle} previousSectionTitle={doubleRenderInStrictModeTitle} nextSectionTitle={'todo'}>
+        <Layout title={useIdHookTitle} previousSectionTitle={doubleRenderInStrictModeTitle} nextSectionTitle={startTransitionAPITitle}>
             <p>A new hook for generating unique IDs on both the client and server, while avoiding hydration mismatches.
                 It is primarily useful for component libraries integrating with accessibility APIs that require unique IDs.</p>
 

@@ -17,6 +17,8 @@ code pre {
     color: white;
     padding: 8px;
     margin: 0;
+    box-sizing: border-box;
+    max-width: 800px;
 }
 
 code, pre {

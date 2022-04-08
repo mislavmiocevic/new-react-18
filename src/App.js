@@ -4,6 +4,8 @@ import reactImage from './adult-react.jpeg';
 import {DoubleRenderInStrictMode, doubleRenderInStrictModeTitle} from "./sections/DoubleRenderInStrictMode";
 import {AdditionalMinorFeatures, additionalMinorFeaturesTitle} from "./sections/AdditionalMinorFeatures";
 import {UseIdHook, useIdHookTitle} from "./sections/useIdHook";
+import {StartTransitionAPI, startTransitionAPITitle} from "./sections/startTransitionAPI";
+import {StartTransitionExample, startTransitionExampleTitle} from "./sections/examples/startTransitionExample";
 
 const App = () => {
     return (
@@ -15,6 +17,7 @@ const App = () => {
                         <li><a href={migrationTitle}>{migrationTitle}</a></li>
                         <li><a href={doubleRenderInStrictModeTitle}>{doubleRenderInStrictModeTitle}</a></li>
                         <li><a href={useIdHookTitle}>{useIdHookTitle}</a></li>
+                        <li><a href={startTransitionAPITitle}>{startTransitionAPITitle}</a></li>
                         <li><a href={additionalMinorFeaturesTitle}>{additionalMinorFeaturesTitle}</a></li>
                     </ul>
 
@@ -30,12 +33,20 @@ const App = () => {
                 <DoubleRenderInStrictMode/>
             ): null}
 
-            {isSectionVisible(additionalMinorFeaturesTitle) ? (
-                <AdditionalMinorFeatures/>
-            ): null}
-
             {isSectionVisible(useIdHookTitle) ? (
                 <UseIdHook/>
+            ): null}
+
+            {isSectionVisible(startTransitionAPITitle) ? (
+                <StartTransitionAPI/>
+            ): null}
+
+            {isSectionVisible(startTransitionExampleTitle) ? (
+                <StartTransitionExample/>
+            ): null}
+
+            {isSectionVisible(additionalMinorFeaturesTitle) ? (
+                <AdditionalMinorFeatures/>
             ): null}
         </>
     );
