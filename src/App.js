@@ -6,6 +6,7 @@ import {AdditionalMinorFeatures, additionalMinorFeaturesTitle} from "./sections/
 import {UseIdHook, useIdHookTitle} from "./sections/useIdHook";
 import {StartTransitionAPI, startTransitionAPITitle} from "./sections/startTransitionAPI";
 import {StartTransitionExample, startTransitionExampleTitle} from "./sections/examples/startTransitionExample";
+import {UseDeferredValueHook, useDeferredValueHookTitle} from "./sections/useDeferredValueHook";
 
 const App = () => {
     return (
@@ -43,6 +44,10 @@ const App = () => {
 
             {isSectionVisible(startTransitionExampleTitle) ? (
                 <StartTransitionExample/>
+            ): null}
+
+            {isSectionVisible(useDeferredValueHookTitle) ? (
+                <UseDeferredValueHook/>
             ): null}
 
             {isSectionVisible(additionalMinorFeaturesTitle) ? (
