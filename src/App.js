@@ -7,6 +7,7 @@ import {UseIdHook, useIdHookTitle} from "./sections/useIdHook";
 import {StartTransitionAPI, startTransitionAPITitle} from "./sections/startTransitionAPI";
 import {StartTransitionExample, startTransitionExampleTitle} from "./sections/examples/startTransitionExample";
 import {UseDeferredValueHook, useDeferredValueHookTitle} from "./sections/useDeferredValueHook";
+import {UseInsertionEffectHook, useInsertionEffectHookTitle} from "./sections/useInsertionEffectHook";
 
 const App = () => {
     return (
@@ -19,6 +20,8 @@ const App = () => {
                         <li><a href={doubleRenderInStrictModeTitle}>{doubleRenderInStrictModeTitle}</a></li>
                         <li><a href={useIdHookTitle}>{useIdHookTitle}</a></li>
                         <li><a href={startTransitionAPITitle}>{startTransitionAPITitle}</a></li>
+                        <li><a href={useDeferredValueHookTitle}>{useDeferredValueHookTitle}</a></li>
+                        <li><a href={useInsertionEffectHookTitle}>{useInsertionEffectHookTitle}</a></li>
                         <li><a href={additionalMinorFeaturesTitle}>{additionalMinorFeaturesTitle}</a></li>
                     </ul>
 
@@ -48,6 +51,10 @@ const App = () => {
 
             {isSectionVisible(useDeferredValueHookTitle) ? (
                 <UseDeferredValueHook/>
+            ): null}
+
+            {isSectionVisible(useInsertionEffectHookTitle) ? (
+                <UseInsertionEffectHook/>
             ): null}
 
             {isSectionVisible(additionalMinorFeaturesTitle) ? (

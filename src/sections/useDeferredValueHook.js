@@ -1,6 +1,7 @@
 import {Layout} from "../shared/Layout";
 import {startTransitionAPITitle} from "./startTransitionAPI";
 import {useDeferredValue, useState} from "react";
+import {useInsertionEffectHookTitle} from "./useInsertionEffectHook";
 
 export const useDeferredValueHookTitle = 'useDeferredValue hook';
 
@@ -25,7 +26,7 @@ export const UseDeferredValueHook = () => {
     console.log('deferredText: ' + deferredText)
 
     return (
-        <Layout title={useDeferredValueHookTitle} previousSectionTitle={startTransitionAPITitle} nextSectionTitle="todo">
+        <Layout title={useDeferredValueHookTitle} previousSectionTitle={startTransitionAPITitle} nextSectionTitle={useInsertionEffectHookTitle}>
             <p>Another concurrent-based hook</p>
             <p>Accepts a value and returns a new copy of the value that will defer to more urgent updates.</p>
             <p>If the current render is the result of an urgent update, like user input, React will return the previous
