@@ -220,6 +220,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;`}
             <h3>If things are not working</h3>
             <p>Check if turning off the strict mode temporarily fixes the issues, and turn it on when all is fixed.</p>
             <p>You can also update your app to React 18, but leave concurrency features off by not updating the latest APIs.</p>
+            <p>Check your libraries, some of them are not updated yet (<code>Fresnel.js</code>), or might not even be updated.</p>
         </Layout>
     );
 }

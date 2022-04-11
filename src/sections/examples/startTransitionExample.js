@@ -65,7 +65,7 @@ export const StartTransitionExample = () => {
     return (
         <>
             <input type="text" onChange={onChange} />
-            <div>Keystroke update status: {isPending ? 'Loading...' : 'Done'}</div>
+            <div>Keystroke update status: {isPending ? 'Pending' : 'Done'}</div>
             <ul>
                 {filteredItems.map(item => (
                     <li key={item.id}>{item.title}</li>
@@ -78,7 +78,7 @@ export const StartTransitionExample = () => {
             </code>
 
             <input type="text" onChange={onChange} />
-            <div style={{ margin: '24px 0' }}>Keystroke update status: {isPending ? 'Loading...' : 'Done'}</div>
+            <div style={{ margin: '24px 0' }}>Keystroke update status: {isPending ? 'Pending' : 'Done'}</div>
             <ul style={{ height: '210px', overflow: 'auto', border: '1px solid blue' }}>
                 {filteredItems.map(item => (
                     <li key={item.id}>{item.title}</li>

@@ -66,7 +66,10 @@ startTransition - A function used when useTransition is not available.
 
             <h4><code>useTransition</code></h4>
 
-            <code><pre>const [isPending, startTransition] = useTransition();
+            <code><pre>
+                {`import { useTransition } from "react";
+                
+const [isPending, startTransition] = useTransition();`}
 </pre></code>
 
             <p>Always use this one in your components.</p>
@@ -108,11 +111,35 @@ return (
             <p><b>More robust example can be seen <a href={startTransitionExampleTitle}>here</a></b>.</p>
 
             <h4><code>startTransition</code></h4>
+            <code>
+                <pre>
+                    {`import { startTransition } from "react";
+                    
+starTransition(scope);`}
+                </pre>
+            </code>
             <p>Use only if <code>useTransition</code> is not available</p>
 
             <h3>Don't start replacing states immediately</h3>
             <p>We still do not know the patterns and best practices of how to use those hook and function, so do not go and replace all your state updates.
             These should be tried and used in the situations where the very complex calculations are happening and the UI feels a bit laggy.</p>
+
+            <h3>Older documentation vs new documentation</h3>
+            <p>In the src code at the moment it says:</p>
+            <code><pre>{`// /node_modules/@types/react/next.d.ts
+            
+Allows components to avoid undesirable loading states 
+by waiting for content to load before transitioning to the next screen. It also 
+allows components to defer slower, data fetching updates until 
+subsequent renders so that more crucial updates can be rendered immediately. 
+...
+If some state update causes a component to suspend, 
+that state update should be wrapped in a transition. 
+@param config An optional object with timeoutMs
+            `}</pre></code>
+            <p>This code documentation is from the <a href="https://17.reactjs.org/docs/concurrent-mode-patterns.html#transitions">older documentation</a>.</p>
+            <p>In the current documentation they are not describing <code>startTransition</code> API as in the older one, so some
+                parts might be worth to read in the older as well.</p>
         </Layout>
     )
 }
