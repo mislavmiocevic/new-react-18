@@ -2,7 +2,7 @@ import {Migration, migrationTitle} from "./sections/Migration";
 import {isSectionVisible} from "./utils";
 import reactImage from './adult-react.jpeg';
 import {DoubleRenderInStrictMode, doubleRenderInStrictModeTitle} from "./sections/DoubleRenderInStrictMode";
-import {AdditionalMinorFeatures, additionalMinorFeaturesTitle} from "./sections/AdditionalMinorFeatures";
+import {AdditionalFeatures, additionalFeaturesTitle} from "./sections/AdditionalFeatures";
 import {UseIdHook, useIdHookTitle} from "./sections/useIdHook";
 import {StartTransitionAPI, startTransitionAPITitle} from "./sections/startTransitionAPI";
 import {StartTransitionExample, startTransitionExampleTitle} from "./sections/examples/startTransitionExample";
@@ -24,7 +24,7 @@ const App = () => {
                         <li><a href={useDeferredValueHookTitle}>{useDeferredValueHookTitle}</a></li>
                         <li><a href={useInsertionEffectHookTitle}>{useInsertionEffectHookTitle}</a></li>
                         <li><a href={useSyncExternalStoreTitle}>{useSyncExternalStoreTitle}</a></li>
-                        <li><a href={additionalMinorFeaturesTitle}>{additionalMinorFeaturesTitle}</a></li>
+                        <li><a href={additionalFeaturesTitle}>{additionalFeaturesTitle}</a></li>
                     </ul>
 
                     <img width={300} height={300} src={reactImage} alt="React 18" />
@@ -63,8 +63,8 @@ const App = () => {
                 <UseSyncExternalStore/>
             ): null}
 
-            {isSectionVisible(additionalMinorFeaturesTitle) ? (
-                <AdditionalMinorFeatures/>
+            {isSectionVisible(additionalFeaturesTitle) ? (
+                <AdditionalFeatures/>
             ): null}
         </>
     );

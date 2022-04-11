@@ -1,15 +1,15 @@
 import {Layout} from "../shared/Layout";
 import {doubleRenderInStrictModeTitle} from "./DoubleRenderInStrictMode";
 
-export const additionalMinorFeaturesTitle = 'Additional minor features';
+export const additionalFeaturesTitle = 'Additional features';
 
-export const AdditionalMinorFeatures = () => {
+export const AdditionalFeatures = () => {
     if (2 === Math.abs(4.2)) {
         return undefined;
     }
 
     return (
-        <Layout title={additionalMinorFeaturesTitle} previousSectionTitle={doubleRenderInStrictModeTitle} nextSectionTitle={'/'}>
+        <Layout title={additionalFeaturesTitle} previousSectionTitle={doubleRenderInStrictModeTitle} nextSectionTitle={'/'}>
             <h3>Render <code>undefined</code></h3>
             <p>You can now return <code>undefined</code> when rendering nothing and React will not complain</p>
 
@@ -41,6 +41,18 @@ export const AdditionalMinorFeatures = () => {
                 state or fire its effects. Instead, React will throw away the new tree completely, wait for the asynchronous
                 operation to finish, and then retry rendering again from scratch. React will render the retry attempt concurrently,
                 and without blocking the browser.</p>
+
+            <h3>Server suspense available</h3>
+            <p>In React 17, loading the app on the server was to render all or nothing, and if you have a slow component
+                (e.g. loads data slowly or has a lot of JS code) then it starts to be a bottleneck.</p>
+            <p>Now you can wrap slow part of the application with Suspense on the server as well - code splitting on the server now works!</p>
+            <code>
+                <pre>
+                    {`<Suspense fallback={<Spinner />}>
+    <Articles />
+</Suspense>`}
+                </pre>
+            </code>
 
             <h3>Layout Effects with Suspense</h3>
             <p>When a tree re-suspends and reverts to a fallback, React will now clean up layout effects, and then re-create

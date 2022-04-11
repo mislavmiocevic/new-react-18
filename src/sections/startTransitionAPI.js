@@ -47,19 +47,19 @@ For example, based on which conversation is more urgent.
             </blockquote>
 
             <p><b>What does this mean in React?</b></p>
-            <p>It means you can choose what state updates have more priority than the other, and use a new React API to prioritize the updates.</p>
+            <p>It means you can choose what state updates have more priority than the other, and use a new React API to (de)prioritize the updates.</p>
 
             <h3>API</h3>
             <code>
                 <pre>
-                    {`useTransition - A hook that lets you mark some state updates as not urgent. 
+                    {`useTransition - A concurrent hook that lets you mark some state updates as not urgent. 
                 Other state updates are considered urgent by default. 
                 React will allow urgent state updates (for example, updating 
                 a text input) to interrupt non-urgent state updates (for example, 
                 rendering a list of search results).
 
 startTransition - A function used when useTransition is not available. 
-                  It also does not have isPending value (mode details in 
+                  It does not have isPending value (mode details in 
                   useTransition section)`}
                 </pre>
             </code>
@@ -111,7 +111,7 @@ return (
             <p>Use only if <code>useTransition</code> is not available</p>
 
             <h3>Don't start replacing states immediately</h3>
-            <p>We still do not know the patterns and best practices of how to use those hooks and function, so do not go and replace all your state updates.
+            <p>We still do not know the patterns and best practices of how to use those hook and function, so do not go and replace all your state updates.
             These should be tried and used in the situations where the very complex calculations are happening and the UI feels a bit laggy.</p>
         </Layout>
     )

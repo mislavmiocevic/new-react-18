@@ -26,16 +26,16 @@ export const Migration = () => {
         <Layout title={migrationTitle} previousSectionTitle={'/'} nextSectionTitle={doubleRenderInStrictModeTitle}>
             <p>More details about the migration can be found in the <a href="https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html">React 18 Upgrade Guide</a> documentation</p>
 
-            <h3>Internet Explorer support not available</h3>
-            <p>React 18 does not work with Internet Explorer, so your app can not be updated to version 18 if you need to
-            support IE. Polyfills also can not be implemented for the features such as microtasks which are core for the new
-            features.</p>
+            <h3>Install React to the latest</h3>
+            <h4>npm</h4>
+            <p><code><pre>npm install react react-dom</pre></code></p>
+            <h4>yarn</h4>
+            <p><code><pre>yarn add react react-dom</pre></code></p>
+            <p>Or if you are using <code>create-react-app</code>, after generating the app with <code>create-react-app</code> (<code>5.0.0</code>) the features from React 18 are not turned on by the default.
+            <p>Follow below APIs updates in order to enable the concurrent mode, otherwise you will be running React 17.</p>
+            </p>
 
-            <div style={{ width: '70px', backgroundColor: 'grey', textAlign: 'center', color: 'white', height: '100px', lineHeight: '100px',
-            borderTopRightRadius: '20px', borderTopLeftRadius: '20px', fontSize: '30px'}}>RIP
-            <div style={{ backgroundColor: 'green', height: '20px', width: '90px', position: "relative", left: '-10px' }}></div></div>
-
-            <h3>Client rendering APIs are updated</h3>
+            <h3>Update the client rendering APIs</h3>
             <p>Before:</p>
             <code>
                 <pre>
@@ -71,7 +71,7 @@ const root = hydrateRoot(container, <App tab="home" />);`}
                 </pre>
             </code>
 
-            <h3>Server rendering APIs are updated</h3>
+            <h3>Update the server rendering APIs</h3>
             <p>More details about the server rendering APIs changes are in <a href="https://github.com/reactwg/react-18/discussions/22">https://github.com/reactwg/react-18/discussions/22</a></p>
             <p>Deprecated</p>
             <code>
@@ -97,15 +97,40 @@ renderToReadableStream - to support streaming SSR with Suspense for modern edge 
                 </pre>
             </code>
 
-            <h3>Server suspense available</h3>
-            <p>In React 17, loading the app on the server was to render all or nothing, and if you have a slow component
-                (e.g. loads data slowly or has a lot of JS code) then it starts to be a bottleneck.</p>
-            <p>Now you can wrap slow part of the application with Suspense on the server as well - code splitting on the server now works!</p>
+            <h3>Update the TypeScript definitions</h3>
+            <p><code>@types/react</code> and <code>@types/react-dom</code> need to be updated to the latest versions.</p>
+            <p>You can install <a href="https://github.com/eps1lon/types-react-codemod">codemod</a> to transform deprecated and
+                breaking changes types.</p>
+            <p>The most notable change is that now <code>children</code> prop needs to be listed explicitly when defining props.</p>
+
             <code>
                 <pre>
-                    {`<Suspense fallback={<Spinner />}>
-    <Articles />
-</Suspense>`}
+                    {`React.ReactType => React.ElementType
+
+React.SFC => React.FC
+
+React.StatelessComponent => React.FunctionComponent
+
+React.SFCElement => React.FunctionComponentElement
+
+React.FunctionComponent<Props> => React.FunctionComponent<React.PropsWithChildren<Props>>
+
+React.FunctionComponent => React.FunctionComponent<React.PropsWithChildren<unknown>>
+
+React.FC => React.FC<React.PropsWithChildren<unknown>>
+
+React.ComponentType => React.ComponentType<React.PropsWithChildren<unknown>>
+
+React.useCallback((event) => {}) => React.useCallback((event: any) => {})
+
+Props => No replacement
+
+RefForwardingComponent => No replacement
+
+SFCFactory => No replacement
+
+
+`}
                 </pre>
             </code>
 
@@ -114,11 +139,11 @@ renderToReadableStream - to support streaming SSR with Suspense for modern edge 
                 <pre>
                     {`ReactDOM.unmountComponentAtNode - use root.unmount()
                     
-ReactDOM.renderSubtreeIntoContainer`}
+ReactDOM.renderSubtreeIntoContainer - deprecated`}
                 </pre>
             </code>
 
-            <h3>Automatic batching was added</h3>
+            <h3>Automatic batching was added - no need for <code>ReactDOM.unstable_batchedUpdates</code></h3>
             <p>Try this in React 17 and 18</p>
             <code>
                 <pre>
@@ -159,7 +184,7 @@ const onIncrement = () => {
                 </pre>
             </code>
 
-            <h3>Configuring a testing environment</h3>
+            <h3>Configure a testing environment</h3>
             <p>You may see this message when updating to React 18:</p>
             <code>
                 <pre>
@@ -181,9 +206,20 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;`}
             <h3>Other breaking changes</h3>
             <h4>Stricter hydration errors</h4>
             <p>Hydration mismatches now treated as errors. The error will go up to the closest Suspense boundary.</p>
-            <h4>Other browsers and the support</h4>
+            <h4>The browsers and the support</h4>
+            <p>React 18 does not work with Internet Explorer, so your app can not be updated to version 18 if you need to
+                support IE. Polyfills also can not be implemented for the features such as microtasks which are core for the new
+                features.</p>
+
+            <div style={{ width: '70px', backgroundColor: 'grey', textAlign: 'center', color: 'white', height: '100px', lineHeight: '100px',
+                borderTopRightRadius: '20px', borderTopLeftRadius: '20px', fontSize: '30px'}}>RIP
+                <div style={{ backgroundColor: 'green', height: '20px', width: '90px', position: "relative", left: '-10px' }}></div></div>
             <p>IE is deprecated and not supported for sure, but more browsers might have lack of the support for <code>Promise</code>, <code>Symbol</code>,
             <code>Object.assign</code> or other modern features so you might need some polyfills for other.</p>
+
+            <h3>If things are not working</h3>
+            <p>Check if turning off the strict mode temporarily fixes the issues, and turn it on when all is fixed.</p>
+            <p>You can also update your app to React 18, but leave concurrency features off by not updating the latest APIs.</p>
         </Layout>
     );
 }
