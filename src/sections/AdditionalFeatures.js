@@ -51,6 +51,19 @@ export const AdditionalFeatures = () => {
 
             <h3>Improved memory usage</h3>
             <p>React now cleans up more internal fields on unmount, making the impact from unfixed memory leaks that may exist in your application code less severe.</p>
+
+            <h3>Offscreen component (concurrency component)</h3>
+            <p>It is not part of React 18.0, but they will soon add a component called <code>{`<Offscreen />`}</code> which will allow to prepare new UI in the
+            background so it is ready before the user reveals it.</p>
+            <blockquote>
+                <pre>{`Concurrent React can remove sections of the UI from the screen, 
+then add them back later while reusing the previous state. For example, 
+when a user tabs away from a screen and back, React should be able to 
+restore the previous screen in the same state it was in before
+
+`}
+                - React in this <a target="_blank" href="https://reactjs.org/blog/2022/03/29/react-v18.html#what-is-concurrent-react">thread</a></pre>
+            </blockquote>
         </Layout>
     )
 }
