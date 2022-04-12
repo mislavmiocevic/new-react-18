@@ -33,7 +33,8 @@ export const UseDeferredValueHook = () => {
             <p>Accepts a value and returns a new copy of the value that will defer to more urgent updates.</p>
             <p>If the current render is the result of an urgent update, like user input, React will return the previous
                 value and then render the new value after the urgent render has completed.</p>
-            <p>This hook is similar to user-space hooks which use debouncing or throttling to defer updates.</p>
+            <p>This hook is similar to user-space hooks which use debouncing or throttling to defer updates - <b>this is not
+            the replacement or implementation for debounce or throttle</b>.</p>
             <p>The benefits to using useDeferredValue is that React will work on the update as soon as other work
                 finishes (instead of waiting for an arbitrary amount of time), and like startTransition,
                 deferred values can suspend without triggering an unexpected fallback for existing content.</p>
@@ -65,7 +66,8 @@ return (
 
             <p style={{ marginTop: '64px' }}>At the moment, no good examples can be found for how and where to use this hook. There were some examples
             of the hook used with experimental Suspense which allows data fetching (not in React 18), but compared with this
-            hook implementation it changed a bit.</p>
+            hook implementation it changed a bit. You can read more <a href="https://github.com/reactwg/react-18/discussions/129">here</a> about how
+            this hook was meant to be used in experimental version.</p>
         </Layout>
     );
 }
