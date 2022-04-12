@@ -31,13 +31,23 @@ export const StartTransitionExample = () => {
 
     return (
         <Layout title={startTransitionExampleTitle} previousSectionTitle={startTransitionAPITitle}>
-            <p>Try to comment in and out <code>startTransition</code> and see how it feels for the input type. Lower the number of items if this number is too big for your device.</p>
+            <p>Try to comment in and out <code>startTransition</code> (variable from <code>useTransition</code>) and see how it feels for the input type. Lower the number of items if this number is too big for your device.</p>
             <p>You can see that with <code>startTransition</code> we are making (our) state updates for the input field changes less prioritized.
             Because of that you see faster user inputs, but slower <code>setFilter</code> execution - we speed up the UI for input (handled internally by React), but slowed down the list rerender. Because of this, the list
             feels less prioritized since it depends on the filter change - which was delayed. <code>startTransition</code> here
                 does not fix the issue with the large lists, and this code is just to demonstrate how prioritization can impact
             both positive and negative so use it wisely.</p>
 
+            <p style={{ marginTop: '64px' }} className="example">Example - useTransition</p>
+            <input type="text" onChange={onChange} />
+            <div style={{ margin: '24px 0' }}>Keystroke update status: {isPending ? 'Pending' : 'Done'}</div>
+            <ul style={{ height: '210px', overflow: 'auto', border: '1px solid blue' }}>
+                {filteredItems.map(item => (
+                    <li key={item.id}>{item.title}</li>
+                ))}
+            </ul>
+
+            <p style={{ marginTop: '64px' }} className="example-code">Example code - useTransition</p>
             <Code code={`const items = [];
 
 for (let i = 0; i < 100000; i++) {
@@ -74,14 +84,6 @@ export const StartTransitionExample = () => {
         </>
     );
 }`} />
-
-            <input style={{ marginTop: '64px' }} type="text" onChange={onChange} />
-            <div style={{ margin: '24px 0' }}>Keystroke update status: {isPending ? 'Pending' : 'Done'}</div>
-            <ul style={{ height: '210px', overflow: 'auto', border: '1px solid blue' }}>
-                {filteredItems.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                ))}
-            </ul>
         </Layout>
     )
 }
