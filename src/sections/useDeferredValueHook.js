@@ -68,6 +68,10 @@ return (
             of the hook used with experimental Suspense which allows data fetching (not in React 18), but compared with this
             hook implementation it changed a bit. You can read more <a href="https://github.com/reactwg/react-18/discussions/129">here</a> about how
             this hook was meant to be used in experimental version.</p>
+            <p>Also, in the above link check these code
+                examples: <a href="https://codesandbox.io/s/priceless-cannon-yhbqce?file=/src/App.js">problem</a> and <a href="https://codesandbox.io/s/romantic-tharp-wedx58?file=/src/App.js">solution</a>,
+            but as already said these examples are using experimental Suspense and Fetch. Typing in the problem code will show the suspense fallback,
+            while in the solution code it will be deferred and thus no UI issues.</p>
         </Layout>
     );
 }
