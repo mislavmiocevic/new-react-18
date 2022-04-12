@@ -19,10 +19,10 @@ const App = () => {
                     <ul style={{ marginBottom: '128px' }}>
                         <li><a href={migrationTitle}>{migrationTitle}</a></li>
                         <li><a href={doubleRenderInStrictModeTitle}>{doubleRenderInStrictModeTitle}</a></li>
-                        <li><a href={useIdHookTitle}>{useIdHookTitle}</a></li>
                         <li><a href={startTransitionAPITitle}>{startTransitionAPITitle}</a></li>
                         <li><a href={useDeferredValueHookTitle}>{useDeferredValueHookTitle}</a></li>
                         <li><a href={useInsertionEffectHookTitle}>{useInsertionEffectHookTitle}</a></li>
+                        <li><a href={useIdHookTitle}>{useIdHookTitle}</a></li>
                         <li><a href={useSyncExternalStoreTitle}>{useSyncExternalStoreTitle}</a></li>
                         <li><a href={additionalFeaturesTitle}>{additionalFeaturesTitle}</a></li>
                     </ul>
@@ -39,10 +39,6 @@ const App = () => {
                 <DoubleRenderInStrictMode/>
             ): null}
 
-            {isSectionVisible(useIdHookTitle) ? (
-                <UseIdHook/>
-            ): null}
-
             {isSectionVisible(startTransitionAPITitle) ? (
                 <StartTransitionAPI/>
             ): null}
@@ -53,6 +49,10 @@ const App = () => {
 
             {isSectionVisible(useDeferredValueHookTitle) ? (
                 <UseDeferredValueHook/>
+            ): null}
+
+            {isSectionVisible(useIdHookTitle) ? (
+                <UseIdHook/>
             ): null}
 
             {isSectionVisible(useInsertionEffectHookTitle) ? (

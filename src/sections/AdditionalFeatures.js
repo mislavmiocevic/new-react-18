@@ -1,12 +1,12 @@
 import {Layout} from "../shared/Layout";
-import {doubleRenderInStrictModeTitle} from "./DoubleRenderInStrictMode";
 import {Code} from "../shared/Code";
+import {useSyncExternalStoreTitle} from "./useSyncExternalStore";
 
 export const additionalFeaturesTitle = 'Additional features';
 
 export const AdditionalFeatures = () => {
     return (
-        <Layout title={additionalFeaturesTitle} previousSectionTitle={doubleRenderInStrictModeTitle} nextSectionTitle={'/'}>
+        <Layout title={additionalFeaturesTitle} previousSectionTitle={useSyncExternalStoreTitle} nextSectionTitle={'/'}>
             <h3>Render <code>undefined</code></h3>
             <p>You can now return <code>undefined</code> when rendering nothing and React will not complain</p>
 

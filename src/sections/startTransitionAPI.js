@@ -1,9 +1,9 @@
 import {Layout} from "../shared/Layout";
-import {useIdHookTitle} from "./useIdHook";
 import {useState, useTransition} from "react";
 import {startTransitionExampleTitle} from "./examples/startTransitionExample";
 import {useDeferredValueHookTitle} from "./useDeferredValueHook";
 import {Code} from "../shared/Code";
+import {doubleRenderInStrictModeTitle} from "./DoubleRenderInStrictMode";
 
 export const startTransitionAPITitle = 'startTransition API';
 
@@ -23,7 +23,7 @@ export const StartTransitionAPI = () => {
     };
 
     return (
-        <Layout title={startTransitionAPITitle} previousSectionTitle={useIdHookTitle} nextSectionTitle={useDeferredValueHookTitle}>
+        <Layout title={startTransitionAPITitle} previousSectionTitle={doubleRenderInStrictModeTitle} nextSectionTitle={useDeferredValueHookTitle}>
             <p>Let's explain concurrency before diving into <code>startTransition</code> API:</p>
             <blockquote>
                 <pre>

@@ -2,8 +2,8 @@ import {Layout} from "../shared/Layout";
 import {migrationTitle} from "./Migration";
 import {useEffect, useState} from "react";
 import doubleRenderImage from '../React-double-render-prod-and-dev.jpg';
-import {useIdHookTitle} from "./useIdHook";
 import {Code} from "../shared/Code";
+import {startTransitionAPITitle} from "./startTransitionAPI";
 
 export const doubleRenderInStrictModeTitle = 'Double render in strict mode';
 
@@ -47,7 +47,7 @@ export const DoubleRenderInStrictMode = () => {
     };
 
     return (
-        <Layout title={doubleRenderInStrictModeTitle} previousSectionTitle={migrationTitle} nextSectionTitle={useIdHookTitle}>
+        <Layout title={doubleRenderInStrictModeTitle} previousSectionTitle={migrationTitle} nextSectionTitle={startTransitionAPITitle}>
             <p>More details about the double render in the strict more can be found in
                 the <a href="https://github.com/reactwg/react-18/discussions/96">GH discussion thread</a> and in the <a href="https://github.com/facebook/react/issues/15074#issuecomment-611998431">
                     GH issue thread</a>.</p>

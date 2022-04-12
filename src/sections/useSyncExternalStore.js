@@ -1,13 +1,13 @@
 import {Layout} from "../shared/Layout";
 import {additionalFeaturesTitle} from "./AdditionalFeatures";
-import {useInsertionEffectHookTitle} from "./useInsertionEffectHook";
 import {Code} from "../shared/Code";
+import {useIdHookTitle} from "./useIdHook";
 
 export const useSyncExternalStoreTitle = 'useSyncExternalStore hook'
 
 export const UseSyncExternalStore = () => {
     return (
-        <Layout title={useSyncExternalStoreTitle} previousSectionTitle={useInsertionEffectHookTitle} nextSectionTitle={additionalFeaturesTitle}>
+        <Layout title={useSyncExternalStoreTitle} previousSectionTitle={useIdHookTitle} nextSectionTitle={additionalFeaturesTitle}>
             <p><b>The main purpose is for external store libraries</b></p>
             <p>The hook is created to integrate external store libraries with the concurrent feature.</p>
             <p>It removes the need for useEffect when implementing subscriptions to external data sources, and is recommended for any library that integrates with state external to React.</p>
