@@ -8,11 +8,11 @@ export const useDeferredValueExampleTitle = 'useDeferredValue example';
 
 // fake API filtering endpoints
 // {"items": ["A", "B"]}
-const bothAandBTodosUrl = 'https://run.mocky.io/v3/391b26ff-8432-4ddd-866f-c1a5288e44e9'
+const bothAandBTodosUrl = 'https://run.mocky.io/v3/391b26ff-8432-4ddd-866f-c1a5288e44e9?mocky-delay=1000ms';
 // {"items": ["A"]}
-const onlyATodoUrl = 'https://run.mocky.io/v3/7c268812-4c98-458b-af82-23da7e861109';
+const onlyATodoUrl = 'https://run.mocky.io/v3/7c268812-4c98-458b-af82-23da7e861109?mocky-delay=1000ms';
 // {"items": ["B"]}
-const onlyBTodoUrl = 'https://run.mocky.io/v3/c1dc9ee7-ddc0-41e8-bc2e-bf8ff3743c3e';
+const onlyBTodoUrl = 'https://run.mocky.io/v3/c1dc9ee7-ddc0-41e8-bc2e-bf8ff3743c3e?mocky-delay=1000ms';
 
 const useItems = (searchTerm) => {
     return useSWR(
@@ -33,7 +33,7 @@ const useItems = (searchTerm) => {
                 .then(data => data);
         },
         {
-            suspense: true // key property for all this to work
+            suspense: true // also a key property to work with Suspense and data fetching
         }
     )
 };
@@ -41,7 +41,7 @@ const useItems = (searchTerm) => {
 const Items = ({ searchTerm }) => {
     const { data } = useItems(searchTerm);
 
-    if (!data.items) {
+    if (!data?.items) {
         return null;
     }
 
@@ -61,7 +61,7 @@ export const UseDeferredValueExample = () => {
     return (
         <Layout title={useDeferredValueExampleTitle} previousSectionTitle={useDeferredValueHookTitle}>
             <p>The example uses <code>Suspense</code> which has the <code>fallback</code> prop. For the <code>Suspense</code>
-            children there is a dummy component showing the items from the fake API (the Mocky.io responses are used). To get the
+            children there is a dummy component showing the items from the fake API (the Mocky.io responses are used with a delay). To get the
                 data, <a href="https://swr.vercel.app/docs/suspense">SWR</a> with the suspense (experimental) feature is used.
             When typing "a" (or "A") the search filter is changed, and then the specific fake endpoint for filtering "a/A" is used in SWR fetcher.
                 When typing "b" (or "B") the search filter is changed, and then the specific fake endpoint for filtering "b/B" is used in SWR fetcher.
@@ -88,11 +88,11 @@ export const UseDeferredValueExample = () => {
             <p style={{ marginTop: '64px' }} className="example-code">Example code - useDeferredValue</p>
             <Code code={`// fake API filtering endpoints
 // {"items": ["A", "B"]}
-const bothAandBTodosUrl = 'https://run.mocky.io/v3/391b26ff-8432-4ddd-866f-c1a5288e44e9'
+const bothAandBTodosUrl = 'https://run.mocky.io/v3/391b26ff-8432-4ddd-866f-c1a5288e44e9?mocky-delay=1000ms';
 // {"items": ["A"]}
-const onlyATodoUrl = 'https://run.mocky.io/v3/7c268812-4c98-458b-af82-23da7e861109';
+const onlyATodoUrl = 'https://run.mocky.io/v3/7c268812-4c98-458b-af82-23da7e861109?mocky-delay=1000ms';
 // {"items": ["B"]}
-const onlyBTodoUrl = 'https://run.mocky.io/v3/c1dc9ee7-ddc0-41e8-bc2e-bf8ff3743c3e';
+const onlyBTodoUrl = 'https://run.mocky.io/v3/c1dc9ee7-ddc0-41e8-bc2e-bf8ff3743c3e?mocky-delay=1000ms';
 
 const useItems = (searchTerm) => {
     return useSWR(
@@ -113,7 +113,7 @@ const useItems = (searchTerm) => {
                 .then(data => data);
         },
         {
-            suspense: true // key property for all this to work
+            suspense: true // also a key property to work with Suspense and data fetching
         }
     )
 };
