@@ -9,6 +9,7 @@ import {StartTransitionExample, startTransitionExampleTitle} from "./sections/ex
 import {UseDeferredValueHook, useDeferredValueHookTitle} from "./sections/useDeferredValueHook";
 import {UseInsertionEffectHook, useInsertionEffectHookTitle} from "./sections/useInsertionEffectHook";
 import {UseSyncExternalStore, useSyncExternalStoreTitle} from "./sections/useSyncExternalStore";
+import {UseDeferredValueExample, useDeferredValueExampleTitle} from "./sections/examples/useDeferredValueExample";
 
 const App = () => {
     return (
@@ -49,6 +50,10 @@ const App = () => {
 
             {isSectionVisible(useDeferredValueHookTitle) ? (
                 <UseDeferredValueHook/>
+            ): null}
+
+            {isSectionVisible(useDeferredValueExampleTitle) ? (
+                <UseDeferredValueExample/>
             ): null}
 
             {isSectionVisible(useIdHookTitle) ? (
