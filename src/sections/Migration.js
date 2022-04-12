@@ -32,9 +32,8 @@ export const Migration = () => {
             <Code code={`npm install react react-dom`} language="bash" />
             <h4>yarn</h4>
             <Code code={`yarn add react react-dom`} language="bash" />
-            <p>Or if you are using <code>create-react-app</code>, after generating the app with <code>create-react-app</code> (<code>5.0.0</code>) the features from React 18 are not turned on by the default.
+            <p>Or if you are using <code>create-react-app</code>, after generating the app with <code>create-react-app</code> (<code>5.0.0</code>) the features from React 18 are not turned on by the default.</p>
             <p>Follow below APIs updates in order to enable the concurrent mode, otherwise you will be running React 17.</p>
-            </p>
 
             <h3>Update the client rendering APIs</h3>
             <p>Before:</p>
