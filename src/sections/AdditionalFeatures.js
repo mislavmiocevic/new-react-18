@@ -1,13 +1,10 @@
 import {Layout} from "../shared/Layout";
 import {doubleRenderInStrictModeTitle} from "./DoubleRenderInStrictMode";
+import {Code} from "../shared/Code";
 
 export const additionalFeaturesTitle = 'Additional features';
 
 export const AdditionalFeatures = () => {
-    if (2 === Math.abs(4.2)) {
-        return undefined;
-    }
-
     return (
         <Layout title={additionalFeaturesTitle} previousSectionTitle={doubleRenderInStrictModeTitle} nextSectionTitle={'/'}>
             <h3>Render <code>undefined</code></h3>
@@ -15,20 +12,18 @@ export const AdditionalFeatures = () => {
 
             {2 === Math.abs(4.2) ? <p>I will not be ever visible</p> : undefined}
 
-            <code>
-                <pre>{`if (2 === Math.abs(4.2)) {
+            <Code code={`if (2 === Math.abs(4.2)) {
     return undefined;
 }
 
 {2 === 3 ? <p>I will not be ever visible</p> : undefined}
-`}</pre>
-            </code>
+`} />
 
             <h3>No <code>setState</code> used on unmounted components warning</h3>
             <p>Most of the times developers run into a scenarios where setting the state was fine, and because of that message they ended up with
             bad necessary workarounds, so this warning is now removed.</p>
 
-            <h3>No <code>console.log</code> supressions</h3>
+            <h3>No console.log supressions</h3>
             <p>This is addition to the double rendering in strict mode, where before even if rendered twice, the logs showed only one
             log. Now all logs will show, and if you are using React DevTools you can suppress that if you want.</p>
 
@@ -46,13 +41,9 @@ export const AdditionalFeatures = () => {
             <p>In React 17, loading the app on the server was to render all or nothing, and if you have a slow component
                 (e.g. loads data slowly or has a lot of JS code) then it starts to be a bottleneck.</p>
             <p>Now you can wrap slow part of the application with Suspense on the server as well - code splitting on the server now works!</p>
-            <code>
-                <pre>
-                    {`<Suspense fallback={<Spinner />}>
+            <Code code={`<Suspense fallback={<Spinner />}>
     <Articles />
-</Suspense>`}
-                </pre>
-            </code>
+</Suspense>`} />
 
             <h3>Layout Effects with Suspense</h3>
             <p>When a tree re-suspends and reverts to a fallback, React will now clean up layout effects, and then re-create

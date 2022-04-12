@@ -1,6 +1,7 @@
 import {Layout} from "../../shared/Layout";
 import {startTransitionAPITitle} from "../startTransitionAPI";
 import {useState, useTransition} from "react";
+import {Code} from "../../shared/Code";
 
 export const startTransitionExampleTitle = 'startTransition example';
 
@@ -36,9 +37,8 @@ export const StartTransitionExample = () => {
             feels less prioritized since it depends on the filter change - which was delayed. <code>startTransition</code> here
                 does not fix the issue with the large lists, and this code is just to demonstrate how prioritization can impact
             both positive and negative so use it wisely.</p>
-            <code>
-                <pre style={{ marginBottom: '40px' }}>
-                    {`const items = [];
+
+            <Code code={`const items = [];
 
 for (let i = 0; i < 100000; i++) {
     items.push({
@@ -73,11 +73,9 @@ export const StartTransitionExample = () => {
             </ul>
         </>
     );
-}`}
-                </pre>
-            </code>
+}`} />
 
-            <input type="text" onChange={onChange} />
+            <input style={{ marginTop: '64px' }} type="text" onChange={onChange} />
             <div style={{ margin: '24px 0' }}>Keystroke update status: {isPending ? 'Pending' : 'Done'}</div>
             <ul style={{ height: '210px', overflow: 'auto', border: '1px solid blue' }}>
                 {filteredItems.map(item => (

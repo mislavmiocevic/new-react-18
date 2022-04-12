@@ -1,6 +1,7 @@
 import {Layout} from "../shared/Layout";
 import {useState} from "react";
 import {doubleRenderInStrictModeTitle} from "./DoubleRenderInStrictMode";
+import {Code} from "../shared/Code";
 
 export const migrationTitle = 'Migration from 17 to 18';
 
@@ -28,74 +29,48 @@ export const Migration = () => {
 
             <h3>Install React to the latest</h3>
             <h4>npm</h4>
-            <p><code><pre>npm install react react-dom</pre></code></p>
+            <Code code={`npm install react react-dom`} language="bash" />
             <h4>yarn</h4>
-            <p><code><pre>yarn add react react-dom</pre></code></p>
+            <Code code={`yarn add react react-dom`} language="bash" />
             <p>Or if you are using <code>create-react-app</code>, after generating the app with <code>create-react-app</code> (<code>5.0.0</code>) the features from React 18 are not turned on by the default.
             <p>Follow below APIs updates in order to enable the concurrent mode, otherwise you will be running React 17.</p>
             </p>
 
             <h3>Update the client rendering APIs</h3>
             <p>Before:</p>
-            <code>
-                <pre>
-                    {`import { render } from 'react-dom';
+            <Code code={`import { render } from 'react-dom';
 const container = document.getElementById('app');
-render(<App tab="home" />, container);`}
-                </pre>
-            </code>
+render(<App tab="home" />, container);`} />
             <p>After:</p>
-            <code>
-                <pre>
-                    {`import { createRoot } from 'react-dom/client';
+            <Code code={`import { createRoot } from 'react-dom/client';
 const container = document.getElementById('app');
 const root = createRoot(container);
-root.render(<App tab="home" />);`}
-                </pre>
-            </code>
+root.render(<App tab="home" />);`} />
             <h4>server-side rendering with hydration</h4>
             <p>Before:</p>
-            <code>
-                <pre>
-                    {`import { hydrate } from 'react-dom';
+            <Code code={`import { hydrate } from 'react-dom';
 const container = document.getElementById('app');
-hydrate(<App tab="home" />, container);`}
-                </pre>
-            </code>
+hydrate(<App tab="home" />, container);`} />
             <p>After:</p>
-            <code>
-                <pre>
-                    {`import { hydrateRoot } from 'react-dom/client';
+            <Code code={`import { hydrateRoot } from 'react-dom/client';
 const container = document.getElementById('app');
-const root = hydrateRoot(container, <App tab="home" />);`}
-                </pre>
-            </code>
+const root = hydrateRoot(container, <App tab="home" />);`} />
 
             <h3>Update the server rendering APIs</h3>
             <p>More details about the server rendering APIs changes are in <a href="https://github.com/reactwg/react-18/discussions/22">https://github.com/reactwg/react-18/discussions/22</a></p>
             <p>Deprecated</p>
-            <code>
-                <pre>
-                    {`renderToNodeStream - use renderToPipeableStream`}
-                </pre>
-            </code>
+            <Code code={`renderToNodeStream - use renderToPipeableStream`} />
 
             <p>Limited (still working but with limited support for Suspense)</p>
-            <code>
-                <pre>
-                    {`renderToString
+            <Code code={`renderToString
                     
-renderToStaticMarkup`}
-                </pre>
-            </code>
+renderToStaticMarkup`}/>
+
             <p>New</p>
-            <code>
-                <pre>
-                    {`renderToPipeableStream - replacement for renderToNodeStream
+            <Code code={`renderToPipeableStream - replacement for renderToNodeStream
                     
-renderToReadableStream - to support streaming SSR with Suspense for modern edge runtime environments, such as Deno and Cloudflare workers`}
-                </pre>
-            </code>
+renderToReadableStream - to support streaming SSR with Suspense for modern edge 
+                         runtime environments, such as Deno and Cloudflare workers`} />
 
             <h3>Update the TypeScript definitions</h3>
             <p><code>@types/react</code> and <code>@types/react-dom</code> need to be updated to the latest versions.</p>
@@ -103,9 +78,7 @@ renderToReadableStream - to support streaming SSR with Suspense for modern edge 
                 breaking changes types.</p>
             <p>The most notable change is that now <code>children</code> prop needs to be listed explicitly when defining props.</p>
 
-            <code>
-                <pre>
-                    {`React.ReactType => React.ElementType
+            <Code code={`React.ReactType => React.ElementType
 
 React.SFC => React.FC
 
@@ -127,27 +100,34 @@ Props => No replacement
 
 RefForwardingComponent => No replacement
 
-SFCFactory => No replacement
-
-
-`}
-                </pre>
-            </code>
+SFCFactory => No replacement`} />
 
             <h3>Other deprecations in APIs</h3>
-            <code>
-                <pre>
-                    {`ReactDOM.unmountComponentAtNode - use root.unmount()
+            <Code code={`ReactDOM.unmountComponentAtNode - use root.unmount()
                     
-ReactDOM.renderSubtreeIntoContainer - deprecated`}
-                </pre>
-            </code>
+ReactDOM.renderSubtreeIntoContainer - deprecated`} />
 
             <h3>Automatic batching was added - no need for <code>ReactDOM.unstable_batchedUpdates</code></h3>
-            <p>Try this in React 17 and 18</p>
-            <code>
-                <pre>
-                    {`const onDecrement = () => {
+            <p>Copy the code below and try it in React 17 by reverting the client rendering APIs changes</p>
+            <p className="example">Example - double render</p>
+            <p>- Open the console</p>
+            <p>- Clicking on the decrement button will show 1 log in both versions</p>
+            <p>- Clicking on the increment button will show 2 logs in React 17, and 1 log in React 18 - both `useState` functions are called in a timeout (could have been e.g. fetch or any async call).</p>
+            <p>Note: disable the strict mode in <code>index.js</code> and check <a href={doubleRenderInStrictModeTitle}>Double render in strict mode</a> section for more details why it stills shows 2 logs</p>
+            <div style={{ margin: '24px 0' }}>
+                <button onClick={onDecrement}>-</button>
+                <button onClick={onIncrement}>+</button>
+            </div>
+            <p>Numeric value: {numericValue}</p>
+            <p>Textual value: {textualValue}</p>
+
+            <p className="example-code">Example code - double render</p>
+            <Code code={`const [numericValue, setNumericValue] = useState(0);
+const [textualValue, setTextualValue] = useState('');
+
+console.log('render')
+
+const onDecrement = () => {
     setNumericValue(prevState => prevState - 1);
     setTextualValue('decremented');
 };
@@ -157,48 +137,37 @@ const onIncrement = () => {
         setNumericValue(prevState => prevState + 1);
         setTextualValue('incremented');
     }, 1000);
-};`}
-                </pre>
-            </code>
-            <p>- Open the console</p>
-            <p>- Clicking on the decrement button will show 1 log in both versions</p>
-            <p>- Clicking on the increment button will show 2 logs in React 17, and 1 log in React 18 - both `useState` functions are called in a timeout.</p>
-            <p>Note: check <a href={doubleRenderInStrictModeTitle}>Double render in strict mode</a> section for more details why it stills show 2 logs</p>
-            <div style={{ margin: '24px 0' }}>
-                <button onClick={onDecrement} disabled={numericValue === 0}>-</button>
-                <button onClick={onIncrement}>+</button>
-            </div>
-            <p>Numeric value: {numericValue}</p>
-            <p>Textual value: {textualValue}</p>
-            <p>To opt-out of automatic batching:</p>
-            <code>
-                <pre>
-                    {`const onDecrement = () => {
+};
+            
+return (
+    <>
+        <div>
+            <button onClick={onDecrement}>-</button>
+            <button onClick={onIncrement}>+</button>
+        </div>
+        <p>Numeric value: {numericValue}</p>
+        <p>Textual value: {textualValue}</p>
+    </>
+);
+`} />
+
+            <p style={{ marginTop: '64px' }}>To opt-out of automatic batching (this is for some edge case, usually you do not need to opt-out):</p>
+            <Code code={`const onDecrement = () => {
     flushSync(() => {
         setNumericValue(prevState => prevState - 1);
     });
     flushSync(() => {
         setTextualValue('decremented');
     });
-};`}
-                </pre>
-            </code>
+};`} />
 
             <h3>Configure a testing environment</h3>
             <p>You may see this message when updating to React 18:</p>
-            <code>
-                <pre>
-                    The current testing environment is not configured to support act(…)
-                </pre>
-            </code>
+            <Code code={`The current testing environment is not configured to support act(…)`} />
 
             <p>To fix it:</p>
-            <code>
-                <pre>
-                    {`// In your test setup file
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;`}
-                </pre>
-            </code>
+            <Code code={`// In your test setup file
+globalThis.IS_REACT_ACT_ENVIRONMENT = true;`} />
             <p>This will tell React that it's running in a unit test-like environment. React will log helpful warnings if you forget to wrap an update with act.</p>
             <p>You can also set the flag to false to tell React that act isn't needed. This can be useful for end-to-end tests that simulate a full browser environment.</p>
             <p>In the future, the testing libraries will handle this (React Testing Library handles it already).</p>

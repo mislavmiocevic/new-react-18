@@ -3,6 +3,7 @@ import {migrationTitle} from "./Migration";
 import {useEffect, useState} from "react";
 import doubleRenderImage from '../React-double-render-prod-and-dev.jpg';
 import {useIdHookTitle} from "./useIdHook";
+import {Code} from "../shared/Code";
 
 export const doubleRenderInStrictModeTitle = 'Double render in strict mode';
 
@@ -36,10 +37,21 @@ export const DoubleRenderInStrictMode = () => {
             <p>More details about the double render in the strict more can be found in
                 the <a href="https://github.com/reactwg/react-18/discussions/96">GH discussion thread</a> and in the <a href="https://github.com/facebook/react/issues/15074#issuecomment-611998431">
                     GH issue thread</a>.</p>
-            <p style={{ marginTop: '100px' }}>[I am initially 0, and I only have <code>useEffect</code> with no arguments which sets a state to (0 + 1):]</p>
-            <p style={{ marginBottom: '100px' }}><b>Render count: {renderCount}</b></p>
 
-            <p>In short, the idea is to catch the rendering bugs before they are even created by having double renderers (basically unmount and remount). If after double render
+            <p style={{ marginTop: '64px' }} className="example">Example - useEffect</p>
+            <p>[I am initially 0, and I only have <code>useEffect</code> with no arguments which sets a state to (0 + 1):]</p>
+            <p>Render count: {renderCount}</p>
+
+            <p className="example-code">Example code - useEffect</p>
+            <Code code={`const [renderCount, setRenderCount] = useState(0);
+
+useEffect(() => {
+    setRenderCount(prevValue => prevValue + 1);
+}, []);
+
+<p>Render count: {renderCount}</p>`} />
+
+            <p style={{ marginTop: '64px' }}>In short, the idea is to catch the rendering bugs before they are even created by having double renderers (basically unmount and remount). If after double render
             your state is not correct, this might be an indicator for an issue in the code. Also, in the future React will provide a feature
             to preserve state between unmounts so that is why this double rendering is all about.</p>
             <p>In React 18 it is turned on for all the components (including the effects or not). In the production environment it is turned off.</p>
@@ -48,6 +60,7 @@ export const DoubleRenderInStrictMode = () => {
                 You can see how there are double renders (including double fetch calls) when using strict mode in the development environment.</p>
             <img style={{ width: '100%', border: '10px solid black', boxSizing: 'border-box' }} alt="Double render in strict mode for production and local environment" src={doubleRenderImage} />
 
+            <p style={{ marginTop: '64px' }} className="example">Example - list</p>
             <p>Todos:</p>
             {todos.map(todo => (
                 <div key={todo}>{todo}</div>
@@ -58,8 +71,8 @@ export const DoubleRenderInStrictMode = () => {
                 <div key={todo + index}>{todo}</div>
             ))}
 
-            <code>
-                <pre style={{ marginTop: '40px' }}>{`const [todos, setTodos] = useState(['original todo']);
+            <p style={{ marginTop: '64px' }} className="example-code">Example code - list</p>
+            <Code code={`const [todos, setTodos] = useState(['original todo']);
 const [buggyTodos, setBuggyTodos] = useState(['original buggy todo']);
 
 useEffect(() => {
@@ -81,8 +94,7 @@ useEffect(() => {
 {buggyTodos.map((todo, index) => (
     <div key={todo + index}>{todo}</div>
 ))}
-`}</pre>
-            </code>
+`} />
         </Layout>
     )
 }

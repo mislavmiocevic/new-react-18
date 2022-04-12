@@ -3,20 +3,21 @@ import {useIdHookTitle} from "./useIdHook";
 import {useState, useTransition} from "react";
 import {startTransitionExampleTitle} from "./examples/startTransitionExample";
 import {useDeferredValueHookTitle} from "./useDeferredValueHook";
+import {Code} from "../shared/Code";
 
 export const startTransitionAPITitle = 'startTransition API';
 
 export const StartTransitionAPI = () => {
     const [isPending, startTransition] = useTransition();
-    const [count, setCount] = useState(0);
+    const [countOne, setCountOne] = useState(0);
     const [countTwo, setCountTwo] = useState(0);
 
-    console.log('count ' + count);
+    console.log('countOne ' + countOne);
     console.log('countTwo ' + countTwo);
 
     const onClick = () => {
         startTransition(() => {
-            setCount(prevCount => prevCount + 1);
+            setCountOne(prevCount => prevCount + 1);
         });
         setCountTwo(prevCount => prevCount + 1);
     };
@@ -50,9 +51,7 @@ For example, based on which conversation is more urgent.
             <p>It means you can choose what state updates have more priority than the other, and use a new React API to (de)prioritize the updates.</p>
 
             <h3>API</h3>
-            <code>
-                <pre>
-                    {`useTransition - A concurrent hook that lets you mark some state updates as not urgent. 
+            <Code language="markdown" code={`useTransition - A concurrent hook that lets you mark some state updates as not urgent. 
                 Other state updates are considered urgent by default. 
                 React will allow urgent state updates (for example, updating 
                 a text input) to interrupt non-urgent state updates (for example, 
@@ -60,65 +59,64 @@ For example, based on which conversation is more urgent.
 
 startTransition - A function used when useTransition is not available. 
                   It does not have isPending value (mode details in 
-                  useTransition section)`}
-                </pre>
-            </code>
+                  useTransition section)`} />
 
-            <h4><code>useTransition</code></h4>
-
-            <code><pre>
-                {`import { useTransition } from "react";
+            <h3>useTransition</h3>
+            <Code code={`import { useTransition } from "react";
                 
-const [isPending, startTransition] = useTransition();`}
-</pre></code>
+const [isPending, startTransition] = useTransition();`} />
 
             <p>Always use this one in your components.</p>
 
-            <p><b>An implementation example:</b></p>
-            <p>Try to comment out the <code>startTransition</code> function usage from <code>useTransition</code> and check the logs.
+            <p className="example">Example - useTransition</p>
+            <p>Try to comment out the <code>startTransition</code> function usage in <code>onClick</code> function handler and check the logs.
             You will see that the second state update gets executed before the first one.
             You will also notice a flashing and this is because of the conditional renderer based on <code>isPending</code> variable.
             </p>
 
-            <div style={{ marginBottom: '24px' }}>
-                {isPending ? <div>pending</div> : undefined}
-                <button onClick={onClick}>Count one {count}</button>
-
+            <div style={{ marginBottom: '40px' }}>
+                {isPending ? <div>pending</div> : null}
+                <button style={{ marginBottom: '16px' }} onClick={onClick}>Increment counts</button>
+                <div>Count one {countOne}</div>
                 <div>Count two {countTwo}</div>
             </div>
 
-            <p><b>Code example (not related to the implementation example above)</b></p>
-            <code>
-                <pre>
-                    {`const [isPending, startTransition] = useTransition();
-const [count, setCount] = useState(0);
+            <p className="example-code">Example code - useTransition</p>
+            <Code code={`const [isPending, startTransition] = useTransition();
+const [countOne, setCountOne] = useState(0);
+const [countTwo, setCountTwo] = useState(0);
+
+console.log('countOne ' + countOne);
+console.log('countTwo ' + countTwo);
 
 const onClick = () => {
     startTransition(() => {
-        setCount(prevCount => prevCount + 1);
+        setCountOne(prevCount => prevCount + 1);
     });
+    setCountTwo(prevCount => prevCount + 1);
 };
 
 return (
     <>
-        {isPending ? <div>pending</div> : undefined}
-        <button onClick={onClick}>{count}</button>
+        <div>
+            {isPending ? <div>pending</div> : null}
+            <button onClick={onClick}>Increment counts</button>
+            <div>Count one {countOne}</div>
+            <div>Count two {countTwo}</div>
+        </div>
     </>
-);`}
-                </pre>
-            </code>
+);`} />
 
             <p><b>More robust example can be seen <a href={startTransitionExampleTitle}>here</a></b>.</p>
 
-            <h4><code>startTransition</code></h4>
-            <code>
-                <pre>
-                    {`import { startTransition } from "react";
+            <h3>startTransition</h3>
+            <p>Do not confuse <code>startTransition</code> function with <code>startTransition</code> variable
+                name from <code>useTransition</code> since they are different.</p>
+
+            <Code code={`import { startTransition } from "react";
                     
-starTransition(scope);`}
-                </pre>
-            </code>
-            <p>Use only if <code>useTransition</code> is not available</p>
+starTransition(scope);`} />
+            <p>Use only if <code>useTransition</code> is not available.</p>
 
             <h3>Don't start replacing states immediately</h3>
             <p>We still do not know the patterns and best practices of how to use those hook and function, so do not go and replace all your state updates.
@@ -126,7 +124,7 @@ starTransition(scope);`}
 
             <h3>Older documentation vs new documentation</h3>
             <p>In the src code at the moment it says:</p>
-            <code><pre>{`// /node_modules/@types/react/next.d.ts
+            <Code code={`// /node_modules/@types/react/next.d.ts
             
 Allows components to avoid undesirable loading states 
 by waiting for content to load before transitioning to the next screen. It also 
@@ -135,8 +133,7 @@ subsequent renders so that more crucial updates can be rendered immediately.
 ...
 If some state update causes a component to suspend, 
 that state update should be wrapped in a transition. 
-@param config An optional object with timeoutMs
-            `}</pre></code>
+@param config An optional object with timeoutMs`} />
             <p>This code documentation is from the <a href="https://17.reactjs.org/docs/concurrent-mode-patterns.html#transitions">older documentation</a>.</p>
             <p>In the current documentation they are not describing <code>startTransition</code> API as in the older one, so some
                 parts might be worth to read in the older as well.</p>
