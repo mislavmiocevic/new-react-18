@@ -49,10 +49,10 @@ export const DoubleRenderInStrictMode = () => {
     return (
         <Layout title={doubleRenderInStrictModeTitle} previousSectionTitle={migrationTitle} nextSectionTitle={startTransitionAPITitle}>
             <p>More details about the double render in the strict more can be found in
-                the <a href="https://github.com/reactwg/react-18/discussions/96">GH discussion thread</a> and in the <a href="https://github.com/facebook/react/issues/15074#issuecomment-611998431">
+                the <a target="_blank" href="https://github.com/reactwg/react-18/discussions/96">GH discussion thread</a> and in the <a href="https://github.com/facebook/react/issues/15074#issuecomment-611998431">
                     GH issue thread</a>.</p>
             <p>You can also read more about state handling
-                and the strict mode in the <a href="https://github.com/reactwg/react-18/discussions/18">GH discusson thread</a>.</p>
+                and the strict mode in the <a target="_blank" href="https://github.com/reactwg/react-18/discussions/18">GH discusson thread</a>.</p>
 
             <p style={{ marginTop: '64px' }} className="example">Example - useEffect</p>
             <p>[I am initially 0, and I only have <code>useEffect</code> with no arguments which sets a state to (0 + 1):]</p>

@@ -43,7 +43,7 @@ It just means that at any moment, I may be in multiple calls, and I choose who t
 For example, based on which conversation is more urgent.
 
 `}
-- Dan Abramov in this <a href="https://github.com/reactwg/react-18/discussions/46#discussioncomment-846786">thread</a>
+- Dan Abramov in this <a target="_blank" href="https://github.com/reactwg/react-18/discussions/46#discussioncomment-846786">thread</a>
                 </pre>
             </blockquote>
 
@@ -134,7 +134,7 @@ subsequent renders so that more crucial updates can be rendered immediately.
 If some state update causes a component to suspend, 
 that state update should be wrapped in a transition. 
 @param config An optional object with timeoutMs`} />
-            <p>This code documentation is from the <a href="https://17.reactjs.org/docs/concurrent-mode-patterns.html#transitions">older documentation</a>.</p>
+            <p>This code documentation is from the <a target="_blank" href="https://17.reactjs.org/docs/concurrent-mode-patterns.html#transitions">older documentation</a>.</p>
             <p>In the current documentation they are not describing <code>startTransition</code> API as in the older one, so some
                 parts might be worth to read in the older as well.</p>
         </Layout>

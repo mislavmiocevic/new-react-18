@@ -20,9 +20,9 @@ getSnapshot - function that returns the current value of the store.
 
 getServerSnapshot - function that returns the snapshot used during server rendering.`} />
 
-            <p>A good example can be found <a href="https://blog.saeloun.com/2021/12/30/react-18-usesyncexternalstore-api">here</a>.</p>
+            <p>A good example can be found <a target="_blank" href="https://blog.saeloun.com/2021/12/30/react-18-usesyncexternalstore-api">here</a>.</p>
 
-            <p>The idea about this hook is to fix <a href="https://github.com/reactwg/react-18/discussions/69">tearing</a>.
+            <p>The idea about this hook is to fix <a target="_blank" href="https://github.com/reactwg/react-18/discussions/69">tearing</a>.
                 Before React 18, this issue did not come up. But in React 18, concurrent rendering makes
                 this issue possible because React pauses during rendering. Between these pauses,
                 updates can pull in the changes related to the data being used to render.

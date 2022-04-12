@@ -50,7 +50,7 @@ You can think of useDeferredValue as scheduling two renders:
   
 `}
 
-- Dan Abramov in this <a href="https://github.com/reactwg/react-18/discussions/129#discussioncomment-2439125">thread</a>
+- Dan Abramov in this <a target="_blank" href="https://github.com/reactwg/react-18/discussions/129#discussioncomment-2439125">thread</a>
                 </pre>
             </blockquote>
 
@@ -63,7 +63,7 @@ The difference lies mostly in where the API is applied:
 
 `}
 
-- Andrew Clark in this <a href="https://github.com/reactwg/react-18/discussions/129#discussion-3963398">thread</a></pre>
+- Andrew Clark in this <a target="_blank" href="https://github.com/reactwg/react-18/discussions/129#discussion-3963398">thread</a></pre>
             </blockquote>
 
             <p className="example">Example - useDeferredValue</p>
@@ -94,13 +94,13 @@ return (
             <h3 style={{ marginTop: '64px' }}>Note</h3>
             <p>At the moment, no good examples can be found for how and where to use this hook. There were some examples
             of the hook used with experimental Suspense which handles the fallback during the data fetching (not in React 18) and not just lazy load, but compared with this
-            hook implementation it changed a bit. You can read more <a href="https://github.com/reactwg/react-18/discussions/129">here</a> about how
+            hook implementation it changed a bit. You can read more <a target="_blank" href="https://github.com/reactwg/react-18/discussions/129">here</a> about how
             this hook was meant to be used in experimental version.</p>
             <p>Also, in the above link check these code
-                examples: <a href="https://codesandbox.io/s/priceless-cannon-yhbqce?file=/src/App.js">problem</a> and <a href="https://codesandbox.io/s/romantic-tharp-wedx58?file=/src/App.js">solution</a>,
+                examples: <a target="_blank" href="https://codesandbox.io/s/priceless-cannon-yhbqce?file=/src/App.js">problem</a> and <a href="https://codesandbox.io/s/romantic-tharp-wedx58?file=/src/App.js">solution</a>,
             but as already said these examples are using experimental Suspense and Fetch. Typing in the problem code will show the suspense fallback,
             while in the solution code it will be deferred and thus no UI issues.</p>
-            <p>You can see a similar example using SWR, but as they noted in the <a href="https://swr.vercel.app/docs/suspense">SWR documentation</a> this is also still experimental</p>
+            <p>You can see a similar example using SWR, but as they noted in the <a target="_blank" href="https://swr.vercel.app/docs/suspense">SWR documentation</a> this is also still experimental</p>
             <a href={useDeferredValueExampleTitle}>See the example</a>
         </Layout>
     );

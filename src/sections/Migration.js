@@ -25,7 +25,7 @@ export const Migration = () => {
 
     return (
         <Layout title={migrationTitle} previousSectionTitle={'/'} nextSectionTitle={doubleRenderInStrictModeTitle}>
-            <p>More details about the migration can be found in the <a href="https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html">React 18 Upgrade Guide</a> documentation</p>
+            <p>More details about the migration can be found in the <a target="_blank" href="https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html">React 18 Upgrade Guide</a> documentation</p>
 
             <h3>Install React to the latest</h3>
             <h4>npm</h4>
@@ -56,7 +56,7 @@ const container = document.getElementById('app');
 const root = hydrateRoot(container, <App tab="home" />);`} />
 
             <h3>Update the server rendering APIs</h3>
-            <p>More details about the server rendering APIs changes are in <a href="https://github.com/reactwg/react-18/discussions/22">https://github.com/reactwg/react-18/discussions/22</a></p>
+            <p>More details about the server rendering APIs changes are in <a target="_blank" href="https://github.com/reactwg/react-18/discussions/22">https://github.com/reactwg/react-18/discussions/22</a></p>
             <p>Deprecated</p>
             <Code code={`renderToNodeStream - use renderToPipeableStream`} />
 
@@ -73,7 +73,7 @@ renderToReadableStream - to support streaming SSR with Suspense for modern edge
 
             <h3>Update the TypeScript definitions</h3>
             <p><code>@types/react</code> and <code>@types/react-dom</code> need to be updated to the latest versions.</p>
-            <p>You can install <a href="https://github.com/eps1lon/types-react-codemod">codemod</a> to transform deprecated and
+            <p>You can install <a target="_blank" href="https://github.com/eps1lon/types-react-codemod">codemod</a> to transform deprecated and
                 breaking changes types.</p>
             <p>The most notable change is that now <code>children</code> prop needs to be listed explicitly when defining props.</p>
 

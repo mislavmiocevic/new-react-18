@@ -62,7 +62,7 @@ export const UseDeferredValueExample = () => {
         <Layout title={useDeferredValueExampleTitle} previousSectionTitle={useDeferredValueHookTitle}>
             <p>The example uses <code>Suspense</code> which has the <code>fallback</code> prop. For the <code>Suspense</code>
             children there is a dummy component showing the items from the fake API (the Mocky.io responses are used with a delay). To get the
-                data, <a href="https://swr.vercel.app/docs/suspense">SWR</a> with the suspense (experimental) feature is used.
+                data, <a target="_blank" href="https://swr.vercel.app/docs/suspense">SWR</a> with the suspense (experimental) feature is used.
             When typing "a" (or "A") the search filter is changed, and then the specific fake endpoint for filtering "a/A" is used in SWR fetcher.
                 When typing "b" (or "B") the search filter is changed, and then the specific fake endpoint for filtering "b/B" is used in SWR fetcher.
                 When typing anything else the search filter is changed, and then the specific fake endpoint for filtering both "a/A" and "b/B" is used in SWR fetcher.</p>
