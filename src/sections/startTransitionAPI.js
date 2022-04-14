@@ -49,6 +49,11 @@ For example, based on which conversation is more urgent.
 
             <p><b>What does this mean in React?</b></p>
             <p>It means you can choose what state updates have more priority than the other, and use a new React API to (de)prioritize the updates.</p>
+            <p>Typing, clicking, or pressing actions are some examples of the prioritized or the urgent actions which need the urgent updates.</p>
+            <p>Deprioritized or the non-urgent actions can be transitions made after some urgent action and we can delay or even cancel their update.</p>
+            <p>With the concurrency and the new API we can change the way some renders appear (or not appear by cancelling them during the render process).</p>
+            <p>React also handles the stale renders by rendering the latest update if needed, e.g. when typing multiple characters it will throw out the previous rendering
+            that is not finished and render the latest one.</p>
 
             <h3>API</h3>
             <Code language="markdown" code={`useTransition - A concurrent hook that lets you mark some state updates as not urgent. 
@@ -58,7 +63,7 @@ For example, based on which conversation is more urgent.
                 rendering a list of search results).
 
 startTransition - A function used when useTransition is not available. 
-                  It does not have isPending value (mode details in 
+                  It does not have isPending value (mode details for isPending in 
                   useTransition section)`} />
 
             <h3>useTransition</h3>
@@ -107,7 +112,7 @@ return (
     </>
 );`} />
 
-            <p><b>More robust example can be seen <a href={startTransitionExampleTitle}>here</a></b>.</p>
+            <p style={{ margin: '64px 0' }}><b>More robust example can be seen <a href={startTransitionExampleTitle}>here</a></b>.</p>
 
             <h3>startTransition</h3>
             <p>Do not confuse <code>startTransition</code> function with <code>startTransition</code> variable

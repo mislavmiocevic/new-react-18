@@ -34,6 +34,8 @@ export const Migration = () => {
             <Code code={`yarn add react react-dom`} language="bash" />
             <p style={{ marginTop: '40px' }}>If you are creating the app with <code>create-react-app</code> (<code>5.0.0</code>) the features from React 18 are not turned on by the default,
             so you still need to follow the below sections (mostly APIs updates) in order to enable the concurrent mode, otherwise you will be running React 17.</p>
+            <p style={{ fontWeight: 'bold' }}>Note: <code>5.0.1</code> enables concurrent mode by default
+                (<a target="_blank" href="https://github.com/facebook/create-react-app/releases/tag/v5.0.1">https://github.com/facebook/create-react-app/releases/tag/v5.0.1</a>)</p>
 
             <h3>Update the client rendering APIs</h3>
             <p>Before:</p>
@@ -43,7 +45,7 @@ render(<App tab="home" />, container);`} />
             <p>After:</p>
             <Code code={`import { createRoot } from 'react-dom/client';
 const container = document.getElementById('app');
-const root = createRoot(container);
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(<App tab="home" />);`} />
             <h4>server-side rendering with hydration</h4>
             <p>Before:</p>
@@ -74,6 +76,11 @@ renderToStaticMarkup`}/>
                     
 renderToReadableStream - to support streaming SSR with Suspense for modern edge 
                          runtime environments, such as Deno and Cloudflare workers`} />
+
+            <h3>Other updates and deprecations in APIs</h3>
+            <Code code={`ReactDOM.unmountComponentAtNode - use root.unmount()
+                    
+ReactDOM.renderSubtreeIntoContainer - deprecated`} />
 
             <h3>Update the TypeScript definitions</h3>
             <p><code>@types/react</code> and <code>@types/react-dom</code> need to be updated to the latest versions.</p>
@@ -107,11 +114,6 @@ Props => No replacement
 RefForwardingComponent => No replacement
 
 SFCFactory => No replacement`} />
-
-            <h3>Other deprecations in APIs</h3>
-            <Code code={`ReactDOM.unmountComponentAtNode - use root.unmount()
-                    
-ReactDOM.renderSubtreeIntoContainer - deprecated`} />
 
             <h3>Automatic batching was added - no need for <code>ReactDOM.unstable_batchedUpdates</code></h3>
             <p>Copy the code below and try it in React 17 by reverting the client rendering APIs changes</p>
