@@ -32,8 +32,8 @@ export const Migration = () => {
             <Code code={`npm install react react-dom`} language="bash" />
             <h4>yarn</h4>
             <Code code={`yarn add react react-dom`} language="bash" />
-            <p>Or if you are using <code>create-react-app</code>, after generating the app with <code>create-react-app</code> (<code>5.0.0</code>) the features from React 18 are not turned on by the default.</p>
-            <p>Follow below APIs updates in order to enable the concurrent mode, otherwise you will be running React 17.</p>
+            <p style={{ marginTop: '40px' }}>If you are creating the app with <code>create-react-app</code> (<code>5.0.0</code>) the features from React 18 are not turned on by the default,
+            so you still need to follow the below sections (mostly APIs updates) in order to enable the concurrent mode, otherwise you will be running React 17.</p>
 
             <h3>Update the client rendering APIs</h3>
             <p>Before:</p>
@@ -75,8 +75,18 @@ renderToReadableStream - to support streaming SSR with Suspense for modern edge
             <p><code>@types/react</code> and <code>@types/react-dom</code> need to be updated to the latest versions.</p>
             <p>You can install <a target="_blank" href="https://github.com/eps1lon/types-react-codemod">codemod</a> to transform deprecated and
                 breaking changes types.</p>
-            <p>The most notable change is that now <code>children</code> prop needs to be listed explicitly when defining props.</p>
+            <p>The most notable change is that now <code>children</code> prop needs to be listed explicitly when defining props.
+            This is an example of how you should use interfaces:</p>
+            <Code code={`// you can have your Props with the children prop and not use React.PropsWithChildren
+React.FunctionComponent<Props> => React.FunctionComponent<React.PropsWithChildren<Props>>
 
+React.FunctionComponent => React.FunctionComponent<React.PropsWithChildren<unknown>>
+
+React.FC => React.FC<React.PropsWithChildren<unknown>>
+
+React.ComponentType => React.ComponentType<React.PropsWithChildren<unknown>>`} />
+
+            <p>Changes in the interfaces:</p>
             <Code code={`React.ReactType => React.ElementType
 
 React.SFC => React.FC
@@ -85,14 +95,7 @@ React.StatelessComponent => React.FunctionComponent
 
 React.SFCElement => React.FunctionComponentElement
 
-React.FunctionComponent<Props> => React.FunctionComponent<React.PropsWithChildren<Props>>
-
-React.FunctionComponent => React.FunctionComponent<React.PropsWithChildren<unknown>>
-
-React.FC => React.FC<React.PropsWithChildren<unknown>>
-
-React.ComponentType => React.ComponentType<React.PropsWithChildren<unknown>>
-
+// no implicit any in useCallback
 React.useCallback((event) => {}) => React.useCallback((event: any) => {})
 
 Props => No replacement
