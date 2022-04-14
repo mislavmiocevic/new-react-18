@@ -53,7 +53,11 @@ hydrate(<App tab="home" />, container);`} />
             <p>After:</p>
             <Code code={`import { hydrateRoot } from 'react-dom/client';
 const container = document.getElementById('app');
-const root = hydrateRoot(container, <App tab="home" />);`} />
+hydrateRoot(container, <App tab="home" />);
+// Unlike with createRoot, you don't need a separate root.render() call here.`} />
+            <p style={{ marginTop: '40px' }}>Note: in the community there were quite of few issues when
+                upgrading so be caution (<a target="_blank" href="https://github.com/vercel/next.js/discussions/35773">https://github.com/vercel/next.js/discussions/35773</a>,
+                <a target="_blank" href="https://stackoverflow.com/questions/71706064/react-18-hydration-failed-because-the-initial-ui-does-not-match-what-was-render">https://stackoverflow.com/questions/71706064/react-18-hydration-failed-because-the-initial-ui-does-not-match-what-was-render</a>).</p>
 
             <h3>Update the server rendering APIs</h3>
             <p>More details about the server rendering APIs changes are in <a target="_blank" href="https://github.com/reactwg/react-18/discussions/22">https://github.com/reactwg/react-18/discussions/22</a></p>
